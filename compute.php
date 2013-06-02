@@ -18,27 +18,27 @@ if ($n <= 1) {
 // Make MemCachier connection
 // ==========================
 //
-// Using Memcached client (recommended)
-// ====================================
-$m = new Memcached();
-if (!$m->setOption(Memcached::OPT_BINARY_PROTOCOL, true)) {
-  echo "Error switching to memcached binary protocol!";
-  exit;
-}
+// Using MemcacheSASL client (recommended)
+// =======================================
+$m = new MemcacheSASL;
 // XXX: MEMCACHIER_SERVERS is a string like "mc1.ec2.memcachier.com:11211, 
 // mc2.ec2.memcachier.com:11211" so it should actually be parsed and 
 // `addServer` called multiple times. Simplifying for now and assuming only one 
 // MemCachier proxy.
-if (!$m->addServer($_ENV["MEMCACHIER_SERVERS"], '11211')) {
-  echo "Error adding in MemCachier servers!";
-  exit;
-}
+$m->addServer($_ENV["MEMCACHIER_SERVERS"], '11211');
 $m->setSaslAuthData($_ENV["MEMCACHIER_USERNAME"], $_ENV["MEMCACHIER_PASSWORD"]);
 
-// Using MemcacheSASL client
-// =========================
-// $m = new MemcacheSASL;
-// $m->addServer('localhost:11211', '11211');
+// Using Memcached client (recommended)
+// ====================================
+// $m = new Memcached();
+// if (!$m->setOption(Memcached::OPT_BINARY_PROTOCOL, true)) {
+//   echo "Error switching to memcached binary protocol!";
+//   exit;
+// }
+// if (!$m->addServer($_ENV["MEMCACHIER_SERVERS"], '11211')) {
+//   echo "Error adding in MemCachier servers!";
+//   exit;
+// }
 // $m->setSaslAuthData($_ENV["MEMCACHIER_USERNAME"], $_ENV["MEMCACHIER_PASSWORD"]);
 
 
@@ -51,7 +51,7 @@ $in_cache = $m->get($n);
 if ($in_cache) {
   $message = "hit";
   $prime = $in_cache;
-} else if ($m->getResultCode() == Memcached::RES_NOTFOUND) {
+} else {
   $message = "miss";
   $prime = 1;
   for ($i = $n; $i > 1; $i--) {
@@ -68,10 +68,6 @@ if ($in_cache) {
     }
   }
   $m->add($n, $prime);
-} else {
-  /* log error */
-  $prime = 1;
-  $message = $m->getResultCode() + ": " + $m->getResultMessage();
 }
 ?>
 

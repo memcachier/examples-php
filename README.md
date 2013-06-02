@@ -13,11 +13,12 @@ currently only available with various cloud providers.
 ## Client
 
 This example uses the
-[Memcached](http://php.net/manual/en/book.memcached.php) PHP client
-that comes distributed with PHP.
+[PHPMemcacheSASL](http://github.com/ronnywang/PHPMemcacheSASL) PHP
+client to connect to and interact with MemCachier.
 
-The [MemcacheSASL](http://github.com/ronnywang/PHPMemcacheSASL) PHP
-client to also works well as an alternative.
+The [Memcached](http://php.net/manual/en/book.memcached.php) PHP
+client that comes distributed with PHP also works well with
+MemCachier.
 
 ## Running
 
