@@ -1,13 +1,48 @@
-MemCachier Primes Example
-=====
+# MemCachier PHP Example
 
-This is an example PHP app that uses MemCachier to cache prime number computations in Heroku.
+This is an example PHP app that uses
+[MemCachier](http://www.memcachier.com) to cache prime number
+computations.
 
-You can view a working version of this app at [memachier-primes.herokuapp.com](http://memachier-primes.herokuapp.com/).  Running this app on your local machine in
-development will work as well, although you'll need to setup memcached locally.  MemCachier is currently
-only available in Heroku.
+You can view a working version of this app
+[here](http://memachier-examples-php.herokuapp.com/). Running this app
+on your local machine in development will work as well, although
+you'll need to install a local memcached server. MemCachier is
+currently only available with various cloud providers.
 
-Library Support
------
+## Client
 
-This example uses the [PHPMemcacheSASL](http://github.com/ronnywang/PHPMemcacheSASL) PHP client to connect to and interact with MemCachier.
+This example uses the
+[Memcached](http://php.net/manual/en/book.memcached.php) PHP client
+that comes distributed with PHP.
+
+The [MemcacheSASL](http://github.com/ronnywang/PHPMemcacheSASL) PHP
+client to also works well as an alternative.
+
+## Running
+
+The application is setup to work on Heroku or another cloud platform
+that the MemCachier caching service is available on. However, you can
+run locally against [memcached](http://memcached.org) by changing the
+server and authentication data. Then simply run:
+
+~~~~ .sh
+$ php -S localhost:3000 -t .
+~~~~
+
+## Get involved!
+
+We are happy to receive bug reports, fixes, documentation enhancements,
+and other improvements.
+
+Please report bugs via the
+[github issue tracker](http://github.com/memcachier/examples-php/issues).
+
+Master [git repository](http://github.com/memcachier/examples-php):
+
+* `git clone git://github.com/memcachier/examples-php.git`
+
+## Licensing
+
+This library is BSD-licensed.
+
