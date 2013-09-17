@@ -9,10 +9,8 @@
 
     <link href="/bootstrap.min.css" rel="stylesheet" media="screen"/>
     <style type="text/css">
-
       /* Sticky footer styles
       -------------------------------------------------- */
-
       html,
       body {
         height: 100%;
@@ -47,12 +45,9 @@
         }
       }
 
-
-
       /* Custom page CSS
       -------------------------------------------------- */
       /* Not required for template or sticky footer method. */
-
       .container {
         width: auto;
         max-width: 680px;
@@ -60,7 +55,6 @@
       .container .credit {
         margin: 20px 0;
       }
-
     </style>
     <link href="/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
 
@@ -85,7 +79,7 @@
         </div>
         <p class="lead">For any number N, we'll find the largest prime number 
           less than or equal to N.  Because our implementation is incredibly basic, we 
-          don't accept N greater than 1,000.  When you submit the form, we'll check the 
+          don't accept N greater than 10,000.  When you submit the form, we'll check the 
           cache to see if we've calculated the largest prime for N. If we get a hit, 
           we'll return the results from the cache.  If not, we'll do the calculation.</p>
         <form action="">

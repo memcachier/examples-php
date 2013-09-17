@@ -10,8 +10,8 @@ $n = intval($_GET["n"]);
 if ($n <= 1) {
   echo "N must be greater than 1";
   exit;
-} else if ($n > 1000) {
-  $n = 1000;
+} else if ($n > 10000) {
+  $n = 10000;
 }
 
 // ==========================
@@ -28,8 +28,8 @@ $m = new MemcacheSASL;
 $m->addServer($_ENV["MEMCACHIER_SERVERS"], '11211');
 $m->setSaslAuthData($_ENV["MEMCACHIER_USERNAME"], $_ENV["MEMCACHIER_PASSWORD"]);
 
-// Using Memcached client (recommended)
-// ====================================
+// Using Memcached client
+// ======================
 // $m = new Memcached();
 // if (!$m->setOption(Memcached::OPT_BINARY_PROTOCOL, true)) {
 //   echo "Error switching to memcached binary protocol!";

@@ -5,10 +5,11 @@ This is an example PHP app that uses
 computations.
 
 You can view a working version of this app
-[here](http://memachier-examples-php.herokuapp.com/). Running this app
-on your local machine in development will work as well, although
-you'll need to install a local memcached server. MemCachier is
-currently only available with various cloud providers.
+[here](http://memachier-examples-php.herokuapp.com/) that uses
+[MemCachier on Heroku](https://addons.heroku.com/memcachier). Running
+this app on your local machine in development will work as well,
+although you'll need to install a local memcached server. MemCachier
+is currently only available with various cloud providers.
 
 ## Client
 
