@@ -21,12 +21,12 @@ if ($n <= 1) {
 // Using MemcacheSASL client (recommended)
 // =======================================
 $m = new MemcacheSASL;
-// XXX: MEMCACHIER_SERVERS is a string like "mc1.ec2.memcachier.com:11211, 
-// mc2.ec2.memcachier.com:11211" so it should actually be parsed and 
-// `addServer` called multiple times. Simplifying for now and assuming only one 
-// MemCachier proxy.
-$m->addServer($_ENV["MEMCACHIER_SERVERS"], '11211');
-$m->setSaslAuthData($_ENV["MEMCACHIER_USERNAME"], $_ENV["MEMCACHIER_PASSWORD"]);
+$servers = explode(",", getenv("MEMCACHIER_SERVERS"));
+foreach ($servers as $s) {
+  $parts = explode(":", $s);
+  $m->addServer($parts[0], $parts[1]);
+}
+$m->setSaslAuthData(getenv("MEMCACHIER_USERNAME"), getenv("MEMCACHIER_PASSWORD"));
 
 // Using Memcached client
 // ======================
@@ -35,11 +35,15 @@ $m->setSaslAuthData($_ENV["MEMCACHIER_USERNAME"], $_ENV["MEMCACHIER_PASSWORD"]);
 //   echo "Error switching to memcached binary protocol!";
 //   exit;
 // }
-// if (!$m->addServer($_ENV["MEMCACHIER_SERVERS"], '11211')) {
-//   echo "Error adding in MemCachier servers!";
-//   exit;
+// $servers = explode(",", getenv("MEMCACHIER_SERVERS"));
+// foreach ($servers as $s) {
+//   $parts = explode(":", $s);
+//   if (!$m->addServer($parts[0], $parts[1])) {
+//     echo "Error adding in MemCachier servers!";
+//     exit;
+//   }
 // }
-// $m->setSaslAuthData($_ENV["MEMCACHIER_USERNAME"], $_ENV["MEMCACHIER_PASSWORD"]);
+// $m->setSaslAuthData(getenv("MEMCACHIER_USERNAME"), getenv("MEMCACHIER_PASSWORD"));
 
 
 // ================
