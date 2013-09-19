@@ -118,17 +118,34 @@ class MemcacheSASL
         }
     }
 
-    public function addServers($servers)
-    {
-        foreach (explode(",", $servers) as $s) {
-            $parts = explode(":", $s);
-            $this->addServer($parts[0], $parts[1]);
-        }
-    }
-
     public function addServer($host, $port, $weight = 0)
     {
         $this->_fp = stream_socket_client($host . ':' . $port);
+    }
+
+    public function addServers($servers)
+    {
+      for ($i = 0; $i < count($servers); $i++) {
+        $s = $servers[$i];
+        $s_count = count($s);
+        if ($s_count == 2) {
+          $this->addServer($s[0], $s[1]);
+        } else if ($s_count >= 3) {
+          $this->addServer($s[0], $s[1], $s[2]);
+        } else {
+          trigger_error("MemcacheSASL::addServers: could not add entry #".
+            ($i+1)." to the server list", E_USER_WARNING);
+        }
+      }
+    }
+
+    public function addServersByStr($servers)
+    {
+        $servers = explode(",", $servers);
+        for ($i = 0; $i < count($servers); $i++) {
+            $servers[$i] = explode(":", $servers[$i]);
+        }
+        $this->addServers($servers);
     }
 
     public function get($key)

@@ -20,30 +20,34 @@ if ($n <= 1) {
 //
 // Using MemcacheSASL client (recommended)
 // =======================================
-$m = new MemcacheSASL;
-$servers = explode(",", getenv("MEMCACHIER_SERVERS"));
-foreach ($servers as $s) {
-  $parts = explode(":", $s);
-  $m->addServer($parts[0], $parts[1]);
-}
-$m->setSaslAuthData(getenv("MEMCACHIER_USERNAME"), getenv("MEMCACHIER_PASSWORD"));
-
-// Using Memcached client
-// ======================
-// $m = new Memcached();
-// if (!$m->setOption(Memcached::OPT_BINARY_PROTOCOL, true)) {
-//   echo "Error switching to memcached binary protocol!";
-//   exit;
-// }
+// $m = new MemcacheSASL;
 // $servers = explode(",", getenv("MEMCACHIER_SERVERS"));
 // foreach ($servers as $s) {
 //   $parts = explode(":", $s);
-//   if (!$m->addServer($parts[0], $parts[1])) {
-//     echo "Error adding in MemCachier servers!";
-//     exit;
-//   }
+//   $m->addServer($parts[0], $parts[1]);
 // }
 // $m->setSaslAuthData(getenv("MEMCACHIER_USERNAME"), getenv("MEMCACHIER_PASSWORD"));
+
+// Using Memcached client
+// ======================
+$m = new Memcached();
+if (!$m->setOption(Memcached::OPT_BINARY_PROTOCOL, true)) {
+  echo "Error switching to memcached binary protocol!";
+  exit;
+}
+$servers = explode(",", getenv("MEMCACHIER_SERVERS"));
+for ($i = 0; $i < count($servers); $i++) {
+  $servers[$i] = explode(":", $servers[$i]);
+}
+$m->addServers($servers);
+foreach ($servers as $s) {
+  $parts = explode(":", $s);
+  if (!$m->addServer($parts[0], $parts[1])) {
+    echo "Error adding in MemCachier servers!";
+    exit;
+  }
+}
+$m->setSaslAuthData(getenv("MEMCACHIER_USERNAME"), getenv("MEMCACHIER_PASSWORD"));
 
 
 // ================
