@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="MemCachier PHP Example">
     <meta name="author" content="MemCachier">
+    <link rel="shortcut icon" href="/public/favicon.ico">
 
     <title>PHP caching example</title>
 
@@ -16,8 +17,6 @@
     <!--[if lt IE 9]>
       <script src="/html5shiv.js"></script>
     <![endif]-->
-
-    <link rel="shortcut icon" href="/public/favicon.ico">
   </head>
 
   <body>
