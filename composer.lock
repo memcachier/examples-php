@@ -1,0 +1,70 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "a5a89b03c557f181b654b012b801f195",
+    "packages": [
+        {
+            "name": "memcachier/php-memcache-sasl",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/memcachier/PHPMemcacheSASL.git",
+                "reference": "f4dbe425700cd82f5a671f36f0effdf346d013f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/memcachier/PHPMemcacheSASL/zipball/f4dbe425700cd82f5a671f36f0effdf346d013f6",
+                "reference": "f4dbe425700cd82f5a671f36f0effdf346d013f6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ronny Wang",
+                    "email": "ronnywang@gmail.com",
+                    "homepage": "http://ronnywang.pixnet.net/blog",
+                    "role": "Creator"
+                },
+                {
+                    "name": "MemCachier Inc",
+                    "email": "code@memcachier.com",
+                    "homepage": "https://www.memcachier.com/"
+                }
+            ],
+            "description": "A PHP Memcache client with binary protocol and SASL support",
+            "homepage": "https://github.com/memcachier/PHPMemcacheSASL",
+            "keywords": [
+                "binary",
+                "cache",
+                "memcache",
+                "sasl"
+            ],
+            "time": "2014-04-14 20:22:38"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "memcachier/php-memcache-sasl": 20
+    },
+    "platform": {
+        "php": ">=5.3.2"
+    },
+    "platform-dev": [
+
+    ]
+}
