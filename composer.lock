@@ -3,26 +3,31 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "86e8558a245fc28868a8b987626b8754",
+    "hash": "eca62172990ac5d131115c561deaa7d1",
     "packages": [
         {
             "name": "memcachier/php-memcache-sasl",
-            "version": "0.9.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/memcachier/PHPMemcacheSASL.git",
-                "reference": "f4dbe425700cd82f5a671f36f0effdf346d013f6"
+                "reference": "3d430cd80b9fabdb86c3f7215e33aae444d17bc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/memcachier/PHPMemcacheSASL/zipball/f4dbe425700cd82f5a671f36f0effdf346d013f6",
-                "reference": "f4dbe425700cd82f5a671f36f0effdf346d013f6",
+                "url": "https://api.github.com/repos/memcachier/PHPMemcacheSASL/zipball/3d430cd80b9fabdb86c3f7215e33aae444d17bc6",
+                "reference": "3d430cd80b9fabdb86c3f7215e33aae444d17bc6",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
             "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MemCachier\\": "src/MemCachier"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -48,7 +53,7 @@
                 "memcache",
                 "sasl"
             ],
-            "time": "2014-04-14 20:22:38"
+            "time": "2014-04-22 19:26:46"
         }
     ],
     "packages-dev": [

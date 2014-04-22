@@ -1,6 +1,6 @@
 <?php
 require 'vendor/autoload.php';
-require 'vendor/memcachier/php-memcache-sasl/MemcacheSASL.php';
+use MemCachier\MemcacheSASL;
 
 // pass 'n' argument
 if (!isset($_GET["n"])) {
