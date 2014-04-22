@@ -2,29 +2,17 @@
 require 'vendor/autoload.php';
 use MemCachier\MemcacheSASL;
 
-// pass 'n' argument
-if (!isset($_GET["n"])) {
-  echo "N must be set!";
-  exit;
-}
-$n = intval($_GET["n"]);
-if ($n <= 1) {
-  echo "N must be greater than 1";
-  exit;
-} else if ($n > 10000) {
-  $n = 10000;
-}
-
-// ==========================
 // Make MemCachier connection
 // ==========================
+
+// parse config
 $servers = explode(",", getenv("MEMCACHIER_SERVERS"));
 for ($i = 0; $i < count($servers); $i++) {
   $servers[$i] = explode(":", $servers[$i]);
 }
 
 // Using Memcached client (recommended)
-// ====================================
+// ------------------------------------
 $m = new Memcached("memcached_pool");
 $m->setOption(Memcached::OPT_BINARY_PROTOCOL, TRUE);
 // Enable no-block for some performance gains but less certainty that data has 
@@ -48,16 +36,29 @@ session_start();
 $_SESSION['test'] = 42;
 
 // Using MemcacheSASL client
-// =========================
+// -------------------------
 // $m = new MemcacheSASL();
 // if (!$m->getServerList()) {
 //   $m->addServers($servers);
 // }
 // $m->setSaslAuthData(getenv("MEMCACHIER_USERNAME"), getenv("MEMCACHIER_PASSWORD"));
 
-// ================
+
 // Using the cache!
 // ================
+
+// pass 'n' argument
+if (!isset($_GET["n"])) {
+  echo "N must be set!";
+  exit;
+}
+$n = intval($_GET["n"]);
+if ($n <= 1) {
+  echo "N must be greater than 1";
+  exit;
+} else if ($n > 10000) {
+  $n = 10000;
+}
 
 // Get the value from the cache.
 $in_cache = $m->get($n);
