@@ -18,38 +18,38 @@ if ($n <= 1) {
 // ==========================
 // Make MemCachier connection
 // ==========================
-//
-// Using MemcacheSASL client (recommended)
-// =======================================
-$m = new MemcacheSASL;
 $servers = explode(",", getenv("MEMCACHIER_SERVERS"));
-foreach ($servers as $s) {
-  $parts = explode(":", $s);
-  $m->addServer($parts[0], $parts[1]);
+for ($i = 0; $i < count($servers); $i++) {
+  $servers[$i] = explode(":", $servers[$i]);
+}
+
+// Using Memcached client (recommended)
+// ====================================
+$m = new Memcached("memcached_pool");
+$m->setOption(Memcached::OPT_BINARY_PROTOCOL, TRUE);
+// Enable no-block for some performance gains but less certainty that data has 
+// been stored.
+$m->setOption(Memcached::OPT_NO_BLOCK, TRUE);
+// Failover automatically when host fails.
+$m->setOption(Memcached::OPT_AUTO_EJECT_HOSTS, TRUE);
+// Adjust timeout. Best left at default.
+// $m->setOption(Memcached::OPT_POLL_TIMEOUT, 1500);
+
+if (!$m->getServerList()) {
+  // We use a consistent connection to memcached, so only add in the servers 
+  // first time through otherwise we end up duplicating our connections to the 
+  // server.
+  $m->addServers($servers);
 }
 $m->setSaslAuthData(getenv("MEMCACHIER_USERNAME"), getenv("MEMCACHIER_PASSWORD"));
 
-// Using Memcached client
-// ======================
-// $m = new Memcached();
-// if (!$m->setOption(Memcached::OPT_BINARY_PROTOCOL, true)) {
-//   echo "Error switching to memcached binary protocol!";
-//   exit;
-// }
-// $servers = explode(",", getenv("MEMCACHIER_SERVERS"));
-// for ($i = 0; $i < count($servers); $i++) {
-//   $servers[$i] = explode(":", $servers[$i]);
-// }
-// $m->addServers($servers);
-// foreach ($servers as $s) {
-//   $parts = explode(":", $s);
-//   if (!$m->addServer($parts[0], $parts[1])) {
-//     echo "Error adding in MemCachier servers!";
-//     exit;
-//   }
+// Using MemcacheSASL client
+// =========================
+// $m = new MemcacheSASL();
+// if (!$m->getServerList()) {
+//   $m->addServers($servers);
 // }
 // $m->setSaslAuthData(getenv("MEMCACHIER_USERNAME"), getenv("MEMCACHIER_PASSWORD"));
-
 
 // ================
 // Using the cache!
@@ -61,7 +61,8 @@ if ($in_cache) {
   $message = "hit";
   $prime = $in_cache;
 } else {
-  $message = "miss";
+  $why = $m->getResultCode();
+  $message = "miss (".$why.")";
   $prime = 1;
   for ($i = $n; $i > 1; $i--) {
     $is_prime = true;
