@@ -43,6 +43,10 @@ if (!$m->getServerList()) {
 }
 $m->setSaslAuthData(getenv("MEMCACHIER_USERNAME"), getenv("MEMCACHIER_PASSWORD"));
 
+// Enable MemCachier session support
+session_start();
+$_SESSION['test'] = 42;
+
 // Using MemcacheSASL client
 // =========================
 // $m = new MemcacheSASL();
