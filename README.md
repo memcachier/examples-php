@@ -13,13 +13,16 @@ is currently only available with various cloud providers.
 
 ## Client
 
-This example uses the
-[MemCachier\MemcacheSASL](http://github.com/memcachier/PHPMemcacheSASL)
-PHP client to connect to and interact with MemCachier.
+This example uses the [PHP Memcached
+client](http://www.php.net/manual/en/book.memcached.php) to connect
+with MemCachier. This is our recommended client, it supports the full
+protocol and has great performance.
 
-The [Memcached](http://php.net/manual/en/book.memcached.php) PHP
-client that comes distributed with PHP also works well with
-MemCachier.
+We also support the
+[MemCachier\MemcacheSASL](http://github.com/memcachier/PHPMemcacheSASL)
+PHP client to connect to and interact with MemCachier. We highly
+recommend the PHP Memcached client over MemcacheSASL though as
+MemcacheSASL doesn't support working with more than one server.
 
 ## Running
 
