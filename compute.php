@@ -20,16 +20,18 @@ $m->setOption(Memcached::OPT_BINARY_PROTOCOL, TRUE);
 $m->setOption(Memcached::OPT_NO_BLOCK, TRUE);
 // Failover automatically when host fails.
 $m->setOption(Memcached::OPT_AUTO_EJECT_HOSTS, TRUE);
-// Adjust timeout. Best left at default.
-// $m->setOption(Memcached::OPT_POLL_TIMEOUT, 1500);
+// Adjust timeouts.
+$m->setOption(Memcached::OPT_CONNECT_TIMEOUT, 2000);
+$m->setOption(Memcached::OPT_POLL_TIMEOUT, 2000);
+$m->setOption(Memcached::OPT_RETRY_TIMEOUT, 2);
 
+$m->setSaslAuthData(getenv("MEMCACHIER_USERNAME"), getenv("MEMCACHIER_PASSWORD"));
 if (!$m->getServerList()) {
   // We use a consistent connection to memcached, so only add in the servers 
   // first time through otherwise we end up duplicating our connections to the 
   // server.
   $m->addServers($servers);
 }
-$m->setSaslAuthData(getenv("MEMCACHIER_USERNAME"), getenv("MEMCACHIER_PASSWORD"));
 
 // Enable MemCachier session support
 session_start();
@@ -37,11 +39,11 @@ $_SESSION['test'] = 42;
 
 // Using MemcacheSASL client
 // -------------------------
+// $m->setSaslAuthData(getenv("MEMCACHIER_USERNAME"), getenv("MEMCACHIER_PASSWORD"));
 // $m = new MemcacheSASL();
 // if (!$m->getServerList()) {
 //   $m->addServers($servers);
 // }
-// $m->setSaslAuthData(getenv("MEMCACHIER_USERNAME"), getenv("MEMCACHIER_PASSWORD"));
 
 
 // Using the cache!
