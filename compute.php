@@ -27,8 +27,8 @@ $m->setOption(Memcached::OPT_RETRY_TIMEOUT, 2);
 
 $m->setSaslAuthData(getenv("MEMCACHIER_USERNAME"), getenv("MEMCACHIER_PASSWORD"));
 if (!$m->getServerList()) {
-  // We use a consistent connection to memcached, so only add in the servers 
-  // first time through otherwise we end up duplicating our connections to the 
+  // We use a consistent connection to memcached, so only add in the servers
+  // first time through otherwise we end up duplicating our connections to the
   // server.
   $m->addServers($servers);
 }
