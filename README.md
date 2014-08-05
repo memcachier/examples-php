@@ -1,4 +1,4 @@
-# MemCachier PHP Example
+# MemCachier PHP Example App
 
 This is an example PHP app that uses
 [MemCachier](http://www.memcachier.com) to cache prime number
@@ -10,6 +10,12 @@ You can view a working version of this app
 this app on your local machine in development will work as well,
 although you'll need to install a local memcached server. MemCachier
 is currently only available with various cloud providers.
+
+## Deploy to Heroku
+
+You can deploy this app yourself to Heroku to play with.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ## Client
 
