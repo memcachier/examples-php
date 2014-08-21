@@ -1,9 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "eca62172990ac5d131115c561deaa7d1",
+    "hash": "f8b00fd607abac9c7c1e895a4d7c65c0",
     "packages": [
         {
             "name": "memcachier/php-memcache-sasl",
@@ -56,20 +57,14 @@
             "time": "2014-04-22 19:26:46"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": [],
+    "prefer-stable": false,
     "platform": {
-        "php": ">=5.3.2"
+        "php": ">=5.3.2",
+        "ext-memcached": "*"
     },
-    "platform-dev": [
-
-    ]
+    "platform-dev": []
 }
