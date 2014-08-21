@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/memcachier/PHPMemcacheSASL.git",
-                "reference": "3d430cd80b9fabdb86c3f7215e33aae444d17bc6"
+                "reference": "44ae92ace0dbf89c003f8b1774ff1694c6eed514"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/memcachier/PHPMemcacheSASL/zipball/3d430cd80b9fabdb86c3f7215e33aae444d17bc6",
-                "reference": "3d430cd80b9fabdb86c3f7215e33aae444d17bc6",
+                "url": "https://api.github.com/repos/memcachier/PHPMemcacheSASL/zipball/44ae92ace0dbf89c003f8b1774ff1694c6eed514",
+                "reference": "44ae92ace0dbf89c003f8b1774ff1694c6eed514",
                 "shasum": ""
             },
             "require": {
@@ -43,7 +43,8 @@
                 {
                     "name": "MemCachier Inc",
                     "email": "code@memcachier.com",
-                    "homepage": "https://www.memcachier.com/"
+                    "homepage": "https://www.memcachier.com/",
+                    "role": "Contributor"
                 }
             ],
             "description": "A PHP Memcache client with binary protocol and SASL support",
@@ -54,7 +55,7 @@
                 "memcache",
                 "sasl"
             ],
-            "time": "2014-04-22 19:26:46"
+            "time": "2014-04-22 19:34:07"
         }
     ],
     "packages-dev": [],
