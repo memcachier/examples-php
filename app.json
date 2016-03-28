@@ -1,8 +1,10 @@
 {
   "name": "MemCachier PHP Example App",
   "description": "PHP app illustrating how to use MemCachier to cache computations",
-  "repository": "https://github.com/memcachier/examples-php",
+  "keywords": ["php", "memcached", "memcache", "memcachier", "caching", "performance" ],
   "logo": "https://www.memcachier.com/assets/logo-large.png",
-  "keywords": ["php", "memcached", "memcache", "memcachier", "caching" ],
+  "image": "heroku/php",
+  "website": "https://www.memcachier.com",
+  "repository": "https://github.com/memcachier/examples-php",
   "addons": [ "memcachier" ]
 }
