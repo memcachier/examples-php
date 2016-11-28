@@ -37,9 +37,9 @@ that the MemCachier caching service is available on. However, you can
 run locally against [memcached](http://memcached.org) by changing the
 server and authentication data. Then simply run:
 
-~~~~ .sh
+```sh
 $ php -S localhost:3000 -t .
-~~~~
+```
 
 ## Get involved!
 
