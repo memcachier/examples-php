@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f8b00fd607abac9c7c1e895a4d7c65c0",
+    "content-hash": "ce55676c0553013a212ad488fbeb481f",
     "packages": [
         {
             "name": "memcachier/php-memcache-sasl",
-            "version": "1.0.1",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/memcachier/PHPMemcacheSASL.git",
-                "reference": "44ae92ace0dbf89c003f8b1774ff1694c6eed514"
+                "reference": "9b71d0d16fa8dd3f2f5fab98726963b46123ac9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/memcachier/PHPMemcacheSASL/zipball/44ae92ace0dbf89c003f8b1774ff1694c6eed514",
-                "reference": "44ae92ace0dbf89c003f8b1774ff1694c6eed514",
+                "url": "https://api.github.com/repos/memcachier/PHPMemcacheSASL/zipball/9b71d0d16fa8dd3f2f5fab98726963b46123ac9d",
+                "reference": "9b71d0d16fa8dd3f2f5fab98726963b46123ac9d",
                 "shasum": ""
             },
             "require": {
@@ -35,16 +35,14 @@
             ],
             "authors": [
                 {
-                    "name": "Ronny Wang",
-                    "email": "ronnywang@gmail.com",
-                    "homepage": "http://ronnywang.pixnet.net/blog",
-                    "role": "Creator"
-                },
-                {
                     "name": "MemCachier Inc",
                     "email": "code@memcachier.com",
-                    "homepage": "https://www.memcachier.com/",
-                    "role": "Contributor"
+                    "homepage": "https://www.memcachier.com/"
+                },
+                {
+                    "name": "Ronny Wang",
+                    "email": "ronnywang@gmail.com",
+                    "homepage": "http://ronnywang.pixnet.net/blog"
                 }
             ],
             "description": "A PHP Memcache client with binary protocol and SASL support",
@@ -55,7 +53,7 @@
                 "memcache",
                 "sasl"
             ],
-            "time": "2014-04-22 19:34:07"
+            "time": "2015-06-04T19:44:27+00:00"
         }
     ],
     "packages-dev": [],
@@ -63,8 +61,9 @@
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
-        "php": ">=5.3.2",
+        "php": "~7.2.0",
         "ext-memcached": "*"
     },
     "platform-dev": []

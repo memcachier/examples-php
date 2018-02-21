@@ -15,7 +15,7 @@ for ($i = 0; $i < count($servers); $i++) {
 // ------------------------------------
 $m = new Memcached("memcached_pool");
 $m->setOption(Memcached::OPT_BINARY_PROTOCOL, TRUE);
-// Enable no-block for some performance gains but less certainty that data has 
+// Enable no-block for some performance gains but less certainty that data has
 // been stored.
 $m->setOption(Memcached::OPT_NO_BLOCK, TRUE);
 // Failover automatically when host fails.
@@ -36,6 +36,9 @@ if (!$m->getServerList()) {
 // Enable MemCachier session support
 session_start();
 $_SESSION['test'] = 42;
+
+// check if session info saved in memcached
+// var_dump($m->get("memc.sess.key." . session_id()));
 
 // Using MemcacheSASL client
 // -------------------------

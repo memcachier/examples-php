@@ -38,7 +38,7 @@ run locally against [memcached](http://memcached.org) by changing the
 server and authentication data. Then simply run:
 
 ```sh
-$ php -S localhost:3000 -t .
+$ php -S localhost:3000 -c .user.ini -t .
 ```
 
 ## Get involved!
@@ -56,4 +56,3 @@ Master [git repository](http://github.com/memcachier/examples-php):
 ## Licensing
 
 This library is BSD-licensed.
-
